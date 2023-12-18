@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'app/routes/app_pages.dart';
-import 'app/screens/home/home_binding.dart';
+import 'package:shop_mobile/presentation/getx/login/otp/otp_binding.dart';
+import 'core/routes/app_pages.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,8 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'Shop Mobile',
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light(),
-        initialRoute: Routes.home,
-        initialBinding: HomeBinding(),
+        initialRoute: Routes.phoneOtp,
+        initialBinding:OtpBinding(),
         getPages: AppRoutes.routes
     );
   }
