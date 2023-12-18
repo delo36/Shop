@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop_mobile/app/models/category_model.dart';
-import '../../../util/constants.dart';
-import '../home_controller.dart';
+
+import '../../../../core/util/constants.dart';
+import '../../../../data/models/category_model.dart';
+import '../../../getx/home/home_controller.dart';
+
 
 class AllSecondLevelWidget extends StatelessWidget {
   const AllSecondLevelWidget({super.key});

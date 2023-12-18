@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop_mobile/app/util/constants.dart';
-import '../../constants/material_design_indicator.dart';
-import '../../values/colors.dart';
+
+import '../../../core/util/constants.dart';
 import 'components/first_level_widget.dart';
 import 'components/greeting_widget.dart';
 import 'components/product_widget.dart';

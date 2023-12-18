@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:shop_mobile/app/models/division_model.dart';
-import 'package:shop_mobile/app/models/product_category_model.dart';
-import 'package:shop_mobile/app/models/product_model.dart';
 
-import '../../models/category_model.dart';
-import '../../models/variant_model.dart';
-import '../../network/api_service.dart';
+import '../../../data/models/category_model.dart';
+import '../../../data/models/division_model.dart';
+import '../../../data/models/product_category_model.dart';
+import '../../../data/models/product_model.dart';
+import '../../../data/models/variant_model.dart';
+import '../../../data/network/api_service.dart';
+
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();

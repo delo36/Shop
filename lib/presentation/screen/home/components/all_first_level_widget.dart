@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop_mobile/app/models/division_model.dart';
 
-import '../../../util/constants.dart';
-import '../home_controller.dart';
+import '../../../../core/util/constants.dart';
+import '../../../../data/models/division_model.dart';
+import '../../../getx/home/home_controller.dart';
 
 class AllFirstLevelWidget extends StatelessWidget {
   const AllFirstLevelWidget({super.key});

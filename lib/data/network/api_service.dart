@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:shop_mobile/data/request/register_customer_request.dart';
 import 'dart:convert';
 import '../../core/util/constants.dart';
+import '../../core/value/constants.dart';
 import '../models/cart_model.dart';
 import '../models/category_model.dart';
 import '../models/division_model.dart';
@@ -18,6 +19,7 @@ class ApiService {
   Future<List<DivisionModel>> getDivisions() async {
     final response = await http.get(Uri.parse(_divisionUrl));
 
+    print("Hello Response = $response");
     if (response.statusCode == 200) {
       final decodeData = json.decode(response.body)['data'] as List;
       return decodeData

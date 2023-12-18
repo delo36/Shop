@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:shop_mobile/data/response/login/validate_otp_response.dart';
 
+import '../../../../core/routes/app_pages.dart';
 import '../../../../core/styles/dialogs/info_dialog.dart';
 import '../../../../core/styles/dialogs/loading_dialog.dart';
 import '../../../../core/value/constants.dart';
@@ -18,7 +19,7 @@ class OtpValidateController extends GetxController{
     try {
       ValidateOtpResponse validateOtpResponse = await _apiService.validateOtpResponse(phoneNumber, otpCode);
       if (validateOtpResponse.status == "success") {
-        Get.to(const HomeScreen());
+        Get.toNamed(Routes.home);
       }
     }on SocketException catch(e){
       Get.dialog(const InfoDialog(title: "Wrong Credential", content: noInternetStatusMessage));

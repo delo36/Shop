@@ -1,4 +1,4 @@
-import 'package:shop_mobile/app/models/variant_model.dart';
+import 'package:shop_mobile/data/models/variant_model.dart';
 
 class ProductModel {
   String productCode;

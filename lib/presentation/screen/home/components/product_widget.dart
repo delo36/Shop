@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop_mobile/app/models/product_model.dart';
-import 'package:shop_mobile/app/screens/home/components/variant_widget.dart';
-import 'package:shop_mobile/app/screens/home/home_controller.dart';
-import 'package:shop_mobile/app/util/constants.dart';
+import 'package:shop_mobile/presentation/screen/home/components/variant_widget.dart';
 
-import '../../../routes/app_pages.dart';
+import '../../../../core/routes/app_pages.dart';
+import '../../../../core/util/constants.dart';
+import '../../../../data/models/product_model.dart';
+import '../../../getx/home/home_controller.dart';
 import 'all_first_level_widget.dart';
 
 class ProductWidget extends StatelessWidget {

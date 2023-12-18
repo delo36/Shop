@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop_mobile/app/models/variant_model.dart';
-import '../../../models/product_model.dart';
-import '../../../util/constants.dart';
-import '../home_controller.dart';
+
+import '../../../../core/util/constants.dart';
+import '../../../../data/models/product_model.dart';
+import '../../../../data/models/variant_model.dart';
+import '../../../getx/home/home_controller.dart';
+
 
 class VariantWidget extends StatelessWidget {
   const VariantWidget({super.key, required this.productModel});
