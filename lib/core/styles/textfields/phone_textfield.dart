@@ -24,6 +24,7 @@ class PhoneTextField extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: TextField(
+          autofocus: true,
           enabled: enable,
           style: TextStyles.subTitleTextStyle.copyWith(color: Colors.black,fontSize: 19),
           textInputAction: TextInputAction.next,
@@ -32,7 +33,7 @@ class PhoneTextField extends StatelessWidget {
           decoration: InputDecoration(
             prefix: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: DefaultText('09',style: TextStyles.subTitleTextStyle.copyWith(fontSize: 25,color: Colors.black)),
+              child: DefaultText('09',style: TextStyles.subTitleTextStyle.copyWith(fontSize: 19,color: Colors.black)),
             ),
             border: InputBorder.none,
             hintText: label,

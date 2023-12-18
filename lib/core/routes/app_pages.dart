@@ -1,5 +1,4 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:shop_mobile/data/response/login/validate_otp_response.dart';
 import 'package:shop_mobile/presentation/getx/login/otp/otp_binding.dart';
 import 'package:shop_mobile/presentation/getx/login/otp_validate/otp_validate_binding.dart';
 import 'package:shop_mobile/presentation/screen/login/otp_validate_screen.dart';
