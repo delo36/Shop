@@ -56,7 +56,7 @@ class _OtpValidateScreenState extends State<OtpValidateScreen> {
                       .copyWith(fontWeight: FontWeight.w500, fontSize: 40)),
                 const DefaultText("Your Verification code was sent to number",
                     style: TextStyles.headerTextStyle),
-                DefaultText(controller.phoneNumber,
+                DefaultText("09${controller.phoneNumber}",
                 style: TextStyles.headerTextStyle
                     .copyWith(fontWeight: FontWeight.bold, fontSize: 25)),
             ],
