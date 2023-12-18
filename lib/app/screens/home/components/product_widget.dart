@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_mobile/app/models/product_model.dart';
+import 'package:shop_mobile/app/screens/home/components/variant_widget.dart';
 import 'package:shop_mobile/app/screens/home/home_controller.dart';
 import 'package:shop_mobile/app/util/constants.dart';
 
 import '../../../routes/app_pages.dart';
+import 'all_first_level_widget.dart';
 
 class ProductWidget extends StatelessWidget {
   const ProductWidget({
@@ -43,10 +45,10 @@ class ProductWidget extends StatelessWidget {
                   itemBuilder: (context, index) {
                     ProductModel productModel = controller.productList[index];
                     return GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routes.homeDetail, arguments: productModel);
+                      onTap: () {Get.toNamed(Routes.homeDetail, arguments: productModel);
                       },
                       child: Container(
+                        height: 180,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
@@ -83,6 +85,34 @@ class ProductWidget extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      productModel.variants.isEmpty
+                                          ? GestureDetector(
+                                        onTap: () {
+                                        },
+                                              child: const Icon(
+                                                Icons.add_circle_outline,
+                                                color: Colors.black54,
+                                                size: 21,
+                                              ),
+                                            )
+                                          : GestureDetector(
+                                        onTap: () {
+                                          showModalBottomSheet(
+                                            context: context,
+                                            builder: (context) =>  VariantWidget(productModel: productModel,),
+                                          );
+                                        },
+                                            child: const Icon(
+                                                Icons.visibility,
+                                                color: Colors.black54,
+                                                size: 21,
+                                              ),
+                                          ),
+                                    ],
+                                  ),
                                   Text(
                                     productModel.productName,
                                     overflow: TextOverflow.ellipsis,
@@ -93,38 +123,19 @@ class ProductWidget extends StatelessWidget {
                                       color: Colors.black87,
                                     ),
                                   ),
-                                  Text(
-                                    productModel.erpCode,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                      color: Colors.black54,
-                                    ),
-                                  ),
                                   const SizedBox(
                                     height: 4,
                                   ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "${productModel.price} MMK",
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      const Icon(
-                                        Icons.add_circle_outline,
-                                        color: Colors.black54,
-                                        size: 21,
-                                      )
-                                    ],
-                                  )
+                                  Text(
+                                    "${productModel.price} MMK",
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),

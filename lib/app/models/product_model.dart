@@ -1,9 +1,13 @@
+import 'package:shop_mobile/app/models/variant_model.dart';
+
 class ProductModel {
   String productCode;
   String erpCode;
   String productName;
   int price;
   String? imageUrl;
+  List<VariantModel> variants;
+
 
   ProductModel({
     required this.productCode,
@@ -11,7 +15,7 @@ class ProductModel {
     required this.productName,
     required this.price,
      this.imageUrl,
-
+    required this.variants
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -21,7 +25,7 @@ class ProductModel {
       productName: json['productName'],
       price: json['price'],
       imageUrl: json['imageUrl'],
-
+      variants: List<VariantModel>.from(json["variants"].map((x) => VariantModel.fromJson(x))),
     );
   }
 }

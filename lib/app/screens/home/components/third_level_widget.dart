@@ -13,6 +13,7 @@ class ThirdLevelWidget extends StatelessWidget {
   });
 
   final CategoryModel categoryModel;
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (controller) {
@@ -22,20 +23,18 @@ class ThirdLevelWidget extends StatelessWidget {
               child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Text(
+                        categoryModel.itemCategoryName,
+                        style: const TextStyle(fontWeight: FontWeight.w600),
+                      ),
                       IconButton(
                         icon: const Icon(Icons.close),
                         onPressed: () {
                           Navigator.pop(context);
                         },
                       ),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      Text(
-                        categoryModel.itemCategoryName,
-                        style: const TextStyle(fontWeight: FontWeight.w600),
-                      )
                     ],
                   ),
                   const SizedBox(

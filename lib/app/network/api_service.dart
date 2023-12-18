@@ -169,12 +169,13 @@ class ApiService {
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
       'x-temp-user-id': '324432432',
+      'token':''
     };
 
     final Map<String, dynamic> requestBody = {
       "productCode": productCode,
       "variantId": null,
-      "quantity": quantity,
+      "quantity": 1,
       "remark": remark,
     };
 
@@ -184,16 +185,12 @@ class ApiService {
       body: jsonEncode(requestBody),
     );
 
-    print(response.statusCode);
-
     if (response.statusCode == 201) {
 
       final Map<String, dynamic> responseData =
           jsonDecode(response.body)['data'];
-      print("${responseData['id']}");
     } else {
       // Handle errors
-      print("Failed to add item to cart");
       throw Exception("Something went wrong");
     }
   }

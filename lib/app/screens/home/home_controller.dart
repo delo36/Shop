@@ -5,6 +5,7 @@ import 'package:shop_mobile/app/models/product_category_model.dart';
 import 'package:shop_mobile/app/models/product_model.dart';
 
 import '../../models/category_model.dart';
+import '../../models/variant_model.dart';
 import '../../network/api_service.dart';
 
 class HomeController extends GetxController {
@@ -17,16 +18,29 @@ class HomeController extends GetxController {
   final categoryList = <CategoryModel>[].obs;
   final productList = <ProductModel>[].obs;
 
+
+  int categoryLength = 0;
   int selectedDivisionIndex = 0;
   int selectedDivisionId = 0;
   int selectedCategoryId = 0;
   int selectedProductCategoryId = 0;
+  int currentIndex = 0;
+  int variantTotalPrice =0;
+
+  final List<String> indexList = [
+    '0',
+    '1',
+  ];
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
     fetchDivisionData(_apiService.getDivisions());
+  }
+  void setCurrentIndex(int index) {
+    currentIndex = index;
+    update();
   }
 
   void setSelectedDivisionIndex(int index) {
@@ -68,7 +82,6 @@ class HomeController extends GetxController {
         fetchCategoryList(selectedDivisionId);
       }
 
-      update();
     } catch (e) {
       print(e);
     }
@@ -77,7 +90,6 @@ class HomeController extends GetxController {
   void fetchCategoryList(int divisionId) async {
     categoryList.assignAll(await _apiService.getCategory(divisionId));
 
-    print(selectedCategoryId);
     if (selectedCategoryId == 0) {
       fetchProductCategoryList(categoryList[0].itemCategoryId, divisionId);
     } else {
@@ -104,4 +116,35 @@ class HomeController extends GetxController {
         page, limit, divisionId, itemCategoryId, productCategoryId));
     update();
   }
+
+  void incrementCount(VariantModel variantModel,int price) {
+    variantModel.count ??= 0;
+
+    variantModel.count = variantModel.count! + 1;
+    variantTotalPrice += price;
+    update();
+  }
+
+  void decrementCount(VariantModel variantModel,int price) {
+    variantModel.count ??= 0;
+
+    if(variantModel.count != 0){
+      variantModel.count = variantModel.count! - 1;
+      variantTotalPrice -= price;
+
+    }
+    update();
+
+  }
+
+
+  Future<void> postCartItem(String productCode, String remark,String variantId) async {
+    try {
+      _apiService.addToCart(productCode, 1, remark);
+      update();
+    } catch (e) {
+      print("Error deleting item: $e");
+    }
+  }
+
 }

@@ -1,5 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_mobile/app/util/constants.dart';
 import '../../constants/material_design_indicator.dart';
 import '../../values/colors.dart';
 import 'components/first_level_widget.dart';
@@ -16,28 +18,41 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+  final List<String> images = [
+    Constants.dummyImage,
+    'https://placekitten.com/201/301',
+    'https://placekitten.com/202/302',
+    'https://placekitten.com/203/303',
+  ];
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
-        child: GreetingWidget(),
-      ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        preferredSize: Size.fromHeight(150),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            GreetingWidget(),
             SearchWidget(),
             FirstLevelWidget(),
-            SizedBox(
-              height: 8,
-            ),
-            SecondLevelWidget(),
-            ProductWidget()
           ],
         ),
+      ),
+      body: CustomScrollView(
+        slivers: <Widget>[
+
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+
+                SecondLevelWidget(),
+                ProductWidget()
+
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

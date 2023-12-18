@@ -30,6 +30,7 @@ class HomeDetailController extends GetxController {
     // TODO: implement onInit
     super.onInit();
 
+
     fetchData();
     fetchProductDetail(productModel.productCode);
     fetchRelatedProduct(productModel.productCode);
