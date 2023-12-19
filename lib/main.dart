@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light(),
         initialRoute: Routes.phoneOtp,
-        initialBinding:OtpBinding(),
         getPages: AppRoutes.routes
     );
   }

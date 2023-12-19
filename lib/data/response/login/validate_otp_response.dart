@@ -36,7 +36,7 @@ class ValidateOtpData {
   ValidateOtpData.fromJson(dynamic json) {
     customer = json['customer'] != null ? Customer.fromJson(json['customer']) : null;
     accessToken = json['accessToken'];
-    registerVerifyToken = json['register_verify_token'];
+    registerVerifyToken = json['register_verify_token'] ?? "Null";
 
   }
   Customer? customer;

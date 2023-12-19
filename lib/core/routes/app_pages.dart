@@ -1,8 +1,10 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:shop_mobile/presentation/getx/login/otp/otp_binding.dart';
 import 'package:shop_mobile/presentation/getx/login/otp_validate/otp_validate_binding.dart';
+import 'package:shop_mobile/presentation/getx/register/register_binding.dart';
 import 'package:shop_mobile/presentation/screen/login/otp_validate_screen.dart';
 import 'package:shop_mobile/presentation/screen/login/phone_otp_screen.dart';
+import 'package:shop_mobile/presentation/screen/login/register_screen.dart';
 import '../../presentation/getx/cart/cart_binding.dart';
 import '../../presentation/screen/cart/cart_screen.dart';
 import '../../presentation/getx/home/home_binding.dart';
@@ -28,6 +30,11 @@ class AppRoutes {
       name: Routes.home,
       page: () => const HomeScreen(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: Routes.register,
+      page: () =>  RegisterScreen(),
+      binding: RegisterBinding(),
     ),
     GetPage(
       name: Routes.homeDetail,

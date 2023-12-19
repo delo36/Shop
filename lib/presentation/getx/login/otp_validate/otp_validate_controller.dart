@@ -14,12 +14,22 @@ class OtpValidateController extends GetxController{
   String phoneNumber = Get.arguments;
   final ApiService _apiService = ApiService();
 
+
   Future<void> otpValidate(String phoneNumber,String otpCode) async{
     Get.dialog(const LoadingDialog(title: "Authentication", content: "Loading..."));
     try {
       ValidateOtpResponse validateOtpResponse = await _apiService.validateOtpResponse(phoneNumber, otpCode);
-      if (validateOtpResponse.status == "success") {
+      if (validateOtpResponse.data?.registerVerifyToken != "Null") {
+        Get.toNamed(Routes.register, arguments: {
+          'phNumber': phoneNumber,
+          'token': validateOtpResponse.data?.registerVerifyToken,
+
+        } );
+
+
+      }else{
         Get.toNamed(Routes.home);
+
       }
     }on SocketException catch(e){
       Get.dialog(const InfoDialog(title: "Wrong Credential", content: noInternetStatusMessage));

@@ -1,14 +1,15 @@
 import 'package:http/http.dart' as http;
+import 'package:shop_mobile/data/models/register_customer_model.dart';
 import 'package:shop_mobile/data/request/register_customer_request.dart';
 import 'dart:convert';
 import '../../core/util/constants.dart';
-import '../../core/value/constants.dart';
 import '../models/cart_model.dart';
 import '../models/category_model.dart';
 import '../models/division_model.dart';
 import '../models/product_category_model.dart';
 import '../models/product_detail_model.dart';
 import '../models/product_model.dart';
+import '../models/register_customer_response_model.dart';
 import '../response/login/otp_response.dart';
 import '../response/login/register_customer_response.dart';
 import '../response/login/validate_otp_response.dart';
@@ -251,4 +252,56 @@ class ApiService {
       throw Exception("An error occurred during the OTP validate");
     }
   }
+
+
+  Future<RegisterCustomerResponseModel> registerCustomer(
+      RegisterCustomerModel registerCustomerModel,
+      ) async {
+    String registerCustomerUrl = "${Constants.baseUrl}auth/register-customer";
+
+    final Map<String, String> headers = {
+      'Content-Type': 'application/json',
+    };
+
+    final Map<String, dynamic> requestBody = {
+      "register_verify_token": registerCustomerModel.registerVerifyToken,
+      "customerName": registerCustomerModel.customerName,
+      "phoneNumber": registerCustomerModel.phoneNumber,
+      "profilePhoto": registerCustomerModel.profilePhoto,
+      "facebookLink": registerCustomerModel.facebookLink,
+      "customerType": registerCustomerModel.customerType,
+      "Gender": registerCustomerModel.gender,
+      "BirthdayDate": registerCustomerModel.birthdayDate,
+      "websiteUrl": registerCustomerModel.websiteUrl,
+      "businessTypeId": registerCustomerModel.businessTypeId,
+      "marketName": registerCustomerModel.marketName,
+      "defaultContact": registerCustomerModel.defaultContact.toJson(), //
+      "defaultAddress": registerCustomerModel.defaultAddress.toJson(), //
+    };
+
+    try {
+      final response = await http.post(
+        Uri.parse(registerCustomerUrl),
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
+
+      if (response.statusCode == 201) {
+
+        // Parse the response data and return it
+        final decodedData = json.decode(response.body)['data'];
+        print("Response = ${decodedData}");
+
+        return RegisterCustomerResponseModel.fromJson(decodedData);
+      } else {
+        // Handle errors
+        final errorMessage = jsonDecode(response.body)['message'] ?? "Something went wrong";
+        throw Exception(errorMessage);
+      }
+    } catch (e) {
+      // Handle other exceptions, such as network issues
+      throw Exception("Failed to register customer: $e");
+    }
+  }
+
 }

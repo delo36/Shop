@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+
 import 'package:shop_mobile/core/extensions/size_extension.dart';
+import 'package:shop_mobile/presentation/screen/login/component/register_phone_number_widget.dart';
 import '../../../../core/styles/buttons/primary_button.dart';
 import '../../../../core/styles/images/circle_asset_image.dart';
 import '../../../../core/styles/textfields/outline_textfield.dart';
@@ -61,11 +63,7 @@ class _WholeSaleWidgetState extends State<WholeSaleWidget> {
               ),
 
               (height * 0.02).paddingHeight,
-              PhoneTextField(
-                controller: phoneController,
-                label: "",
-                enable: false,
-              ),
+                RegisterPhoneNumberWidget(),
               (height * 0.02).paddingHeight,
               //const BirthdayWidget(),
               (height * 0.02).paddingHeight,

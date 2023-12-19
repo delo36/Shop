@@ -8,9 +8,8 @@ import 'component/retail_widget.dart';
 import 'component/whole_sale_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
-  final TextEditingController phoneController;
-  ValidateOtpResponse validateOtpResponse;
-  RegisterScreen({super.key,required this.phoneController,required this.validateOtpResponse});
+
+  RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -19,12 +18,7 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
 
   List<String> label = ["Retail","WholeSale"];
-  late TextEditingController phoneNumberController;
-  @override
-  void initState() {
-    phoneNumberController = TextEditingController();
-    super.initState();
-  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -58,8 +52,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: TabBarView(
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    RetailWidget(phoneController: widget.phoneController,validateOtpResponse: widget.validateOtpResponse,),
-                    WholeSaleWidget(phoneController: widget.phoneController,validateOtpResponse: widget.validateOtpResponse,)
+                    RetailWidget(),
+                  //  WholeSaleWidget(phoneController: widget.phoneController,validateOtpResponse: widget.validateOtpResponse,)
                   ],
                 ),
               )
